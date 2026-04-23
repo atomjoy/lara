@@ -120,8 +120,8 @@ php artisan vendor:publish --tag=lara-images --force
 
 ### Width to 640px
 
-<img src="https://raw.githubusercontent.com/atomjoy/lara/main/lara-email-rwd-640.webp" width="60%">
+<img src="https://raw.githubusercontent.com/atomjoy/lara/main/lara-email-rwd-640.webp" width="50%">
 
 ### Width to 520px
 
-<img src="https://raw.githubusercontent.com/atomjoy/lara/main/lara-email-rwd-520.webp" width="40%">
+<img src="https://raw.githubusercontent.com/atomjoy/lara/main/lara-email-rwd-520.webp" width="50%">
