@@ -1,0 +1,44 @@
+{
+    "name": "atomjoy/lara",
+    "description": "Lara is an HTML email template for Laravel notifications.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Atomjoy",
+            "email": "atomjoy.official@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "laravel/framework": "^13.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ],
+        "psr-4": {
+            "Lara\\": "src/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Migrations\\": "database/migrations/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": []
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lara\\Tests\\": "tests/"
+        },
+        "files": []
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lara\\LaraServiceProvider"
+            ],
+            "aliases": {
+                "Lara": "Lara\\Facades\\Lara"
+            }
+        }
+    }
+}
