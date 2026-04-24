@@ -10,9 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {
-        "laravel/framework": "^13.0"
-    },
+    "require": {},
     "autoload": {
         "classmap": [
             "src/"
