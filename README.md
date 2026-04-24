@@ -26,13 +26,22 @@ Lara email notification example in **LaraNotificanion** class.
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Notification;
 use Lara\Notifications\LaraNotificanion;
 
-// Display email in browser
+// Set smtp settings in .env file
 Route::get('/lara', function () {
-    // Create user if not exist
-    // User::factory(1)->create();
-    return (new LaraNotificanion())->toMail(User::first());
+
+    // Make user
+    $user = User::factory()->make([
+        'email' => 'your-email@example.com'
+    ]);
+
+    // Send notification email
+    Notification::sendNow($user, new LaraNotificanion());
+
+    // Show in browser
+    return (new LaraNotificanion())->toMail($user);
 });
 ```
 
