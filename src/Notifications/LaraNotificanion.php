@@ -56,9 +56,18 @@ class LaraNotificanion extends Notification
             // 'mail.email.info.title' => 'Looking for more?',
 
             // Footer urls
+            // 'mail.email.footer.logo' => 'https://example.com/footer-logo.webp',
             // 'mail.email.footer.unsubscribe' => 'https://example.com/unsubscribe',
             // 'mail.email.footer.policy' => 'https://example.com/policy',
             // 'mail.email.footer.settings' => 'https://example.com/settings',
+
+            // Show footer social icons
+            'mail.email.social.instagram' => 'https://instagram.com/',
+            'mail.email.social.facebook' => 'https://facebook.com/',
+            'mail.email.social.youtube' => 'https://youtube.com/',
+            'mail.email.social.tiktok' => 'https://tiktok.com/',
+            'mail.email.social.x' => 'https://x.com/',
+
         ]);
 
         // Sample data
