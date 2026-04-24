@@ -1,6 +1,6 @@
 @props([
-    'price' => null,
     'url' => null,
+    'price' => null,
     'text' => 'See more',
 ])
 @if($price)

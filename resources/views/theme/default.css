@@ -411,8 +411,17 @@ img {
     width: 100%;
     height: auto;
     max-height: 150px;
+    margin-bottom: 15px;
     border-radius: 5px;
     object-fit: cover;
+}
+
+.event-date {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff2d20;
+    margin-bottom: 5px;
 }
 
 .event-title {
@@ -421,25 +430,18 @@ img {
     height: auto;
     font-size: 16px;
     font-weight: 700;
-    margin-top: 10px;
+    margin-bottom: 15px;
     color: #18181b;
     overflow: hidden;
-}
-
-.event-date {
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: #ff2d20;
 }
 
 .event-button {
     float: left;
     display: inline;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 13px 20px;
+    margin-bottom: 15px;
     border-radius: 25px;
     text-decoration: none;
     color: #18181b;

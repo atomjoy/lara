@@ -9,12 +9,12 @@
 <img src="{{ $event['img'] }}" class="event-img">
 @endisset
 
-@isset($event['title'])
-<div class="event-title">{{ $event['title'] }}</div>
-@endisset
-
 @isset($event['date'])
 <div class="event-date">{{ $event['date'] }}</div>
+@endisset
+
+@isset($event['title'])
+<div class="event-title">{{ $event['title'] }}</div>
 @endisset
 
 @isset($event['desc'])

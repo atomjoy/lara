@@ -115,8 +115,8 @@ class LaraNotificanion extends Notification
             'title' => 'Adipisicing elit boste adipisicing elit.',
             'desc' => 'Color sit amet consectetur adipisicing elit boste. Voluptates fugit, aliquam mollitia quidem voluptate nam ipsa eius? Et aspernatur ipsum esse aliquid maiores sunt repellendus tempore quasi, dicta est atque.',
             'url' => 'https://example.com/product/55',
-            'button' => 'Buy now',
-            'price' => '$69.99',
+            // 'button' => 'Buy now',
+            // 'price' => '$69.99',
         ];
 
         $events = [
@@ -139,9 +139,8 @@ class LaraNotificanion extends Notification
             'line2' => 'RGB / Mat / 32cal',
             'line3' => 'Black, gold',
             'url' => 'https://example.com/product/55',
-            'price' => '3595.99',
+            'price' => '3595.99zł',
             'old_price' => '3899.99',
-            'currency' => 'zł',
         ];
 
         $product2 = [
@@ -151,9 +150,8 @@ class LaraNotificanion extends Notification
             'line2' => '64GB / 400W / AMD',
             'line3' => '4 x PCI',
             'url' => 'https://example.com/product/55',
-            'price' => '3259.99',
+            'price' => '3259.99zł',
             'old_price' => '3689.99',
-            'currency' => 'zł',
         ];
 
         $product3 = [
@@ -163,9 +161,8 @@ class LaraNotificanion extends Notification
             'line2' => '96GB / 15cal / 1kg ',
             'line3' => 'Black metal',
             'url' => 'https://example.com/product/55',
-            'price' => '14999.00',
+            'price' => '14999.00zł',
             'old_price' => '15956.00',
-            'currency' => 'zł',
         ];
 
         $product4 = [
@@ -175,9 +172,8 @@ class LaraNotificanion extends Notification
             'line2' => '32GB / 16MB / 1kg',
             'line3' => 'Mate black',
             'url' => 'https://example.com/product/55',
-            'price' => '1559.99',
+            'price' => '1559.99zł',
             'old_price' => '2089.00',
-            'currency' => 'zł',
         ];
 
         $product5 = [
@@ -187,9 +183,8 @@ class LaraNotificanion extends Notification
             'line2' => '64GB / 150W / CUDA',
             'line3' => '4 monitory',
             'url' => 'https://example.com/product/55',
-            'price' => '3259.99',
+            'price' => '3259.99zł',
             'old_price' => '3689.00',
-            'currency' => 'zł',
         ];
 
         $product6 = [
@@ -199,9 +194,8 @@ class LaraNotificanion extends Notification
             'line2' => '16GB / 20Mp / 7cm ',
             'line3' => 'Green Mate',
             'url' => 'https://example.com/product/55',
-            'price' => '2559.99',
-            'old_price' => '2989.00',
-            'currency' => 'zł',
+            'price' => '2559.95zł',
+            'old_price' => '2989.86',
         ];
 
         $products = [
@@ -215,7 +209,7 @@ class LaraNotificanion extends Notification
             ->subject('Events notification')
             ->greeting('Space Invaders Game: Premiere')
             ->line('The introduction to the notification. Bold <strong>html tekst</strong> goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis?')
-            ->action('Notification Action', url('/confirm/email'))
+            ->action('Confirm Email Address', url('/confirm/email'))
             ->line('Thank you for using our application, <a href="https://example.com" target="_blank">very nice!</a>')
             ->theme('lara::theme.default')
             ->markdown('lara::email.default', [

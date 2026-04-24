@@ -1,13 +1,10 @@
 @php
-    $price = isset($product['price']) ? $product['price'] : null;
-    $sale = isset($product['old_price']) ? $product['old_price'] : null;
-    $currency = isset($product['currency']) ? $product['currency'] : "zł";
+    $url = isset($product['url']) ? $product['url'] : app()->request->getSchemeAndHttpHost();
 @endphp
 
 <div class="product-cell">
-
 @isset($product['img'])
-<a href="{{$product['url']}}" target="_blank">
+<a href="{{ $url }}" target="_blank">
 <img src="{{ $product['img'] }}" class="product-img">
 </a>
 @endisset
@@ -30,12 +27,12 @@
 @endisset
 
 <div class="product-prices">
-@isset($sale)
-<span class="product-sale-price" style="text-decoration: line-through">{{ $sale }}</span>
+@isset($product['old_price'])
+<span class="product-sale-price" style="text-decoration: line-through">{{ $product['old_price'] }}</span>
 @endisset
 
-@isset($product['url'])
-<x-lara::product-button :url="$product['url']" :price="$price" :currency="$currency"/>
+@isset($product['price'])
+<x-lara::product-button :url="$url" :price="$product['price']"/>
 @endisset
 </div>
 
