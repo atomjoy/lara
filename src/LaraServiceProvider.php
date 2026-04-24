@@ -2,6 +2,7 @@
 
 namespace Lara;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -38,6 +39,7 @@ class LaraServiceProvider extends ServiceProvider
         $this->configureLoads();
         $this->configureRoutes();
         $this->configurePublishing();
+        $this->configureComponents();
     }
 
     /**
@@ -101,5 +103,19 @@ class LaraServiceProvider extends ServiceProvider
             //     __DIR__ . '/../lang' => base_path('lang/vendor/lara'),
             // ], 'lara-lang');
         }
+    }
+
+    /**
+     * Configure the loads offered by the application.
+     *
+     * @return void
+     */
+    function configureComponents()
+    {
+        // Load components from namespace (does not work for package Class components)
+        // Blade::componentNamespace('Lara\\Views\\Components', 'lara');
+
+        // Load components manually (works with Class components use dash '-')
+        Blade::component('lara-alert', \Lara\View\Components\Alert::class);
     }
 }

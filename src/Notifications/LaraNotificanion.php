@@ -34,6 +34,7 @@ class LaraNotificanion extends Notification
     {
         // Page url
         $host = app()->request->getSchemeAndHttpHost();
+        $host = 'https://raw.githubusercontent.com/atomjoy/lara/refs/heads/main/public';
 
         // Lara config email template
         // Images always with https://
@@ -41,7 +42,7 @@ class LaraNotificanion extends Notification
             // Show or change
             'mail.email.browser' => $host . "/email/123",
             // 'mail.email.link' => 'https://example.com',
-            // 'mail.email.logo' =>  $host . "/vendor/lara/email/logo.webp",
+            // 'mail.email.logo' =>  $host . "/email/logo.webp",
             // 'mail.email.banner' => "https://images.unsplash.com/photo-1556125574-d7f27ec36a06?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
             // Hide
@@ -62,12 +63,12 @@ class LaraNotificanion extends Notification
 
         // Sample data
         $img = 'https://picsum.photos/id/' . rand(1, 99) . '/300/200';
-        $img1 = $host . '/vendor/lara/email/events/1.webp';
-        $img2 = $host . '/vendor/lara/email/events/2.webp';
-        $img3 = $host . '/vendor/lara/email/events/3.webp';
-        $img4 = $host . '/vendor/lara/email/events/4.webp';
-        $img5 = $host . '/vendor/lara/email/events/5.webp';
-        $img6 = $host . '/vendor/lara/email/events/6.webp';
+        $img1 = $host . '/email/events/1.webp';
+        $img2 = $host . '/email/events/2.webp';
+        $img3 = $host . '/email/events/3.webp';
+        $img4 = $host . '/email/events/4.webp';
+        $img5 = $host . '/email/events/5.webp';
+        $img6 = $host . '/email/events/6.webp';
 
         $event1 = [
             'img' => $img1,
@@ -124,12 +125,12 @@ class LaraNotificanion extends Notification
             [$event4, $event5],
         ];
 
-        $img1 = $host . '/vendor/lara/email/products/1.webp';
-        $img2 = $host . '/vendor/lara/email/products/2.webp';
-        $img3 = $host . '/vendor/lara/email/products/3.webp';
-        $img4 = $host . '/vendor/lara/email/products/4.webp';
-        $img5 = $host . '/vendor/lara/email/products/6.webp';
-        $img6 = $host . '/vendor/lara/email/products/5.webp';
+        $img1 = $host . '/email/products/1.webp';
+        $img2 = $host . '/email/products/2.webp';
+        $img3 = $host . '/email/products/3.webp';
+        $img4 = $host . '/email/products/4.webp';
+        $img5 = $host . '/email/products/6.webp';
+        $img6 = $host . '/email/products/5.webp';
 
         $product1 = [
             'img' => $img1,

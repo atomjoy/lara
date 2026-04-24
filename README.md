@@ -7,16 +7,13 @@ Lara is a custom theme for HTML email notifications in Laravel 13.
 ```sh
 composer create-project laravel/laravel:^13 test
 cd test
-composer require atomjoy/lara:^1.0
+composer require atomjoy/lara
 ```
 
 ### After Install
 
 ```sh
-# Config package
-php artisan vendor:publish --provider='Lara\LaraServiceProvider'
-
-# Publish email images to public/vendor/lara
+# Publish lara email images to public/vendor/lara and update logo and banner
 php artisan vendor:publish --tag=lara-images --force
 ```
 
@@ -27,11 +24,14 @@ Lara email notification example in **LaraNotificanion** class.
 ```php
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Lara\Notifications\LaraNotificanion;
 
 // Display email in browser
 Route::get('/lara', function () {
+    // Create user if not exist
+    // User::factory(1)->create();
     return (new LaraNotificanion())->toMail(User::first());
 });
 ```
@@ -112,6 +112,9 @@ public function toMail(object $notifiable): MailMessage
 php artisan vendor:publish --tag=lara-views --force
 php artisan vendor:publish --tag=lara-config --force
 php artisan vendor:publish --tag=lara-images --force
+
+# Sample with provider package
+php artisan vendor:publish --provider='Lara\LaraServiceProvider' --tag="images"
 ```
 
 ## Lara Email Theme
