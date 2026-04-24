@@ -141,7 +141,7 @@ class LaraNotificanion extends Notification
             'url' => 'https://example.com/product/55',
             'price' => '3595.99',
             'old_price' => '3899.99',
-            'button' => 'zł',
+            'currency' => 'zł',
         ];
 
         $product2 = [
@@ -153,7 +153,7 @@ class LaraNotificanion extends Notification
             'url' => 'https://example.com/product/55',
             'price' => '3259.99',
             'old_price' => '3689.99',
-            'button' => 'zł',
+            'currency' => 'zł',
         ];
 
         $product3 = [
@@ -165,7 +165,7 @@ class LaraNotificanion extends Notification
             'url' => 'https://example.com/product/55',
             'price' => '14999.00',
             'old_price' => '15956.00',
-            'button' => 'zł',
+            'currency' => 'zł',
         ];
 
         $product4 = [
@@ -177,7 +177,7 @@ class LaraNotificanion extends Notification
             'url' => 'https://example.com/product/55',
             'price' => '1559.99',
             'old_price' => '2089.00',
-            'button' => 'zł',
+            'currency' => 'zł',
         ];
 
         $product5 = [
@@ -189,7 +189,7 @@ class LaraNotificanion extends Notification
             'url' => 'https://example.com/product/55',
             'price' => '3259.99',
             'old_price' => '3689.00',
-            'button' => 'zł',
+            'currency' => 'zł',
         ];
 
         $product6 = [
@@ -201,7 +201,7 @@ class LaraNotificanion extends Notification
             'url' => 'https://example.com/product/55',
             'price' => '2559.99',
             'old_price' => '2989.00',
-            'button' => 'zł',
+            'currency' => 'zł',
         ];
 
         $products = [

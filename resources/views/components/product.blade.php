@@ -35,7 +35,7 @@
 @endisset
 
 @isset($product['url'])
-<x-lara::product-button :url="$product['url']" :price="$price" :text="$currency"/>
+<x-lara::product-button :url="$product['url']" :price="$price" :currency="$currency"/>
 @endisset
 </div>
 
