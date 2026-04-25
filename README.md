@@ -19,7 +19,7 @@ php artisan vendor:publish --tag=lara-images --force
 
 ## Show Lara Email Theme
 
-Lara email notification example in **LaraNotificanion** class.
+Lara email notification examples in **LaraNotificanion** class.
 
 ```php
 <?php
@@ -69,58 +69,78 @@ public function via(object $notifiable): array
 public function toMail(object $notifiable): MailMessage
 {
     // Page url
-    $host = app()->request->getSchemeAndHttpHost();
+    $page = app()->request->getSchemeAndHttpHost();
+    // Demo image url
+    $host = 'https://raw.githubusercontent.com/atomjoy/lara/refs/heads/main/public';
 
     // Lara config email template links and images always with https://
     config([
-        // Show or change
-        'mail.email.browser' => $host . "/show/email/123",
-        // 'mail.email.logo' =>  $host . "/vendor/lara/email/logo.webp",
-        // 'mail.email.banner' => "https://example.com/external-image.webp",
+        // Show
+            'mail.email.browser' => $page . "/email/123",
 
-        // Hide
-        // 'mail.email.logo' => null,
-        // 'mail.email.banner' => null,
-        // 'mail.email.browser' => null,
+            // Change
+            // 'mail.email.link' => 'https://example.com',
+            // 'mail.email.logo' =>  $host . "/email/logo.webp",
+            // 'mail.email.banner' => "https://images.unsplash.com/photo-1556125574-d7f27ec36a06?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
-        // Email titles
-        // 'mail.email.products.title' => 'Fresh promotions',
-        // 'mail.email.events.title' => 'Upcoming live events',
-        // 'mail.email.info.title' => 'Looking for more?',
+            // Hide
+            // 'mail.email.logo' => null,
+            // 'mail.email.banner' => null,
+            // 'mail.email.browser' => null,
 
-        // Footer urls
-        // 'mail.email.footer.unsubscribe' => 'https://example.com/unsubscribe',
-        // 'mail.email.footer.policy' => 'https://example.com/policy',
-        // 'mail.email.footer.settings' => 'https://example.com/settings',
+            // Email title
+            // 'mail.email.products.title' => 'Fresh promotions',
+            // 'mail.email.events.title' => 'Upcoming live events',
+            // 'mail.email.info.title' => 'Looking for more?',
+
+            // Footer url
+            // 'mail.email.footer.logo' => 'https://example.com/footer-logo.webp',
+            // 'mail.email.footer.unsubscribe' => 'https://example.com/unsubscribe',
+            // 'mail.email.footer.policy' => 'https://example.com/policy',
+            // 'mail.email.footer.settings' => 'https://example.com/settings',
+
+            // Show footer social icons
+            'mail.email.social.instagram' => 'https://instagram.com/',
+            'mail.email.social.facebook' => 'https://facebook.com/',
+            'mail.email.social.youtube' => 'https://youtube.com/',
+            'mail.email.social.tiktok' => 'https://tiktok.com/',
+            'mail.email.social.x' => 'https://x.com/',
     ]);
 
+    // ...
+
+    // Defaut theme events, products
     return (new MailMessage())
-        // ->error()
-        // ->success()
+        // ->error()->success()
         // ->salutation('Best regards from our team')
         ->subject('Events notification')
-        ->greeting('Space Invaders Game: Premiere')
+        ->greeting('Web Interaction in the Age of AI')
         ->line('The introduction to the notification. Bold <strong>html tekst</strong> goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis?')
-        ->action('Notification Action', url('/'))
-        ->line('Thank you for using our application, <a href="example.com" target="_blank">very nice!</a>')
+        ->action('Confirm Email Address', url('/confirm/email'))
+        ->line('Thank you for using our application, <a href="https://example.com" target="_blank">very nice!</a>')
+        // Set default or mini theme and markdown
         ->theme('lara::theme.default')
         ->markdown('lara::email.default', [
             // Comment to hide
-            'code' => '888777',
             'date' => 'March 28, 4PM CET',
-            // 'info' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis? Nesciunt neque molestias expedita eius voluptate saepe.',
-            // 'products' => $products,
-            // 'events' => $events,
+            'code' => '888777',
+            'info' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis? Nesciunt neque molestias expedita eius voluptate saepe.',
+            'products' => $products,
+            'events' => $events,
+            'news' => $news,
         ]);
 }
 ```
 
-## Publish For Edit (optional)
+## Publish Theme For Edit (optional)
 
 ```sh
+# In resources/views/vendor/lara
 php artisan vendor:publish --tag=lara-views --force
-php artisan vendor:publish --tag=lara-config --force
+# In public/vendor/lara
 php artisan vendor:publish --tag=lara-images --force
+# In config/lara.php
+php artisan vendor:publish --tag=lara-config --force
 
 # Sample with provider package
 php artisan vendor:publish --provider='Lara\LaraServiceProvider' --tag="images"

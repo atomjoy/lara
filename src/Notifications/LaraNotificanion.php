@@ -33,14 +33,17 @@ class LaraNotificanion extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         // Page url
-        $host = app()->request->getSchemeAndHttpHost();
+        $page = app()->request->getSchemeAndHttpHost();
+        // Image url
         $host = 'https://raw.githubusercontent.com/atomjoy/lara/refs/heads/main/public';
 
         // Lara config email template
         // Images always with https://
         config([
-            // Show or change
-            'mail.email.browser' => $host . "/email/123",
+            // Show
+            'mail.email.browser' => $page . "/email/123",
+
+            // Change
             // 'mail.email.link' => 'https://example.com',
             // 'mail.email.logo' =>  $host . "/email/logo.webp",
             // 'mail.email.banner' => "https://images.unsplash.com/photo-1556125574-d7f27ec36a06?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -50,12 +53,12 @@ class LaraNotificanion extends Notification
             // 'mail.email.banner' => null,
             // 'mail.email.browser' => null,
 
-            // Email titles
+            // Email title
             // 'mail.email.products.title' => 'Fresh promotions',
             // 'mail.email.events.title' => 'Upcoming live events',
             // 'mail.email.info.title' => 'Looking for more?',
 
-            // Footer urls
+            // Footer url
             // 'mail.email.footer.logo' => 'https://example.com/footer-logo.webp',
             // 'mail.email.footer.unsubscribe' => 'https://example.com/unsubscribe',
             // 'mail.email.footer.policy' => 'https://example.com/policy',
@@ -212,22 +215,55 @@ class LaraNotificanion extends Notification
             [$product4, $product5, $product6],
         ];
 
+        $news1 = [
+            'image' => $host . '/email/events/1.webp',
+            'title' => 'Lorem sit amet consectetur adipisicing elit.',
+            'text' => 'Color sit amet consectetur adipisicing elit boste. Voluptates fugit, aliquam mollitia quidem voluptate nam ipsa eius? Et aspernatur ipsum esse aliquid maiores sunt repellendus tempore quasi, dicta est atque.',
+            'url' => 'https://example.com/post/5',
+            'button_text' => 'See now',
+        ];
+
+        $news2 = [
+            'image' => $host . '/email/events/6.webp',
+            'title' => 'Lorem sit amet consectetur adipisicing elit.',
+            'text' => 'Color sit amet consectetur adipisicing elit boste. Voluptates fugit, aliquam mollitia quidem voluptate nam ipsa eius? Et aspernatur ipsum esse aliquid maiores sunt repellendus tempore quasi, dicta est atque.',
+            'url' => 'https://example.com/post/9',
+            'button_text' => 'See now',
+        ];
+
+        $news3 = [
+            'image' => $host . '/email/events/2.webp',
+            'title' => 'Lorem sit amet consectetur adipisicing elit.',
+            'text' => 'Color sit amet consectetur adipisicing elit boste. Voluptates fugit, aliquam mollitia quidem voluptate nam ipsa eius? Et aspernatur ipsum esse aliquid maiores sunt repellendus tempore quasi, dicta est atque.',
+            'url' => 'https://example.com/post/6',
+            'button_text' => 'See now',
+        ];
+
+        // Mini theme news
+        $news = [
+            $news1,
+            $news2,
+            $news3
+        ];
+
         return (new MailMessage())
             // ->error()->success()
             // ->salutation('Best regards from our team')
             ->subject('Events notification')
-            ->greeting('Space Invaders Game: Premiere')
+            ->greeting('Web Interaction in the Age of AI')
             ->line('The introduction to the notification. Bold <strong>html tekst</strong> goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis?')
             ->action('Confirm Email Address', url('/confirm/email'))
             ->line('Thank you for using our application, <a href="https://example.com" target="_blank">very nice!</a>')
+            // Set default or mini theme and markdown
             ->theme('lara::theme.default')
             ->markdown('lara::email.default', [
                 // Comment to hide
+                'date' => 'March 28, 4PM CET',
                 'code' => '888777',
                 'products' => $products,
                 'events' => $events,
-                'date' => 'March 28, 4PM CET',
                 'info' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis? Nesciunt neque molestias expedita eius voluptate saepe.',
+                'news' => $news,
             ]);
     }
 
