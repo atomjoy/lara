@@ -37,9 +37,9 @@ class LaraServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureLoads();
-        $this->configureRoutes();
         $this->configurePublishing();
         $this->configureComponents();
+        // $this->configureRoutes();
     }
 
     /**
@@ -64,7 +64,6 @@ class LaraServiceProvider extends ServiceProvider
     protected function configureRoutes()
     {
         Route::group([
-            'namespace' => 'Lara\Http\Controllers',
             'as' => config('lara.route.name', 'lara.'),
             'prefix' => config('lara.route.prefix', 'lara'),
             'domain' => config('lara.route.domain', null),

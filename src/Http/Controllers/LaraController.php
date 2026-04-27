@@ -2,6 +2,7 @@
 
 namespace Lara\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
 

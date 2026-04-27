@@ -260,9 +260,9 @@ class LaraNotificanion extends Notification
                 // Comment to hide
                 'date' => 'March 28, 4PM CET',
                 'code' => '888777',
+                'info' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis? Nesciunt neque molestias expedita eius voluptate saepe.',
                 'products' => $products,
                 'events' => $events,
-                'info' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis? Nesciunt neque molestias expedita eius voluptate saepe.',
                 'news' => $news,
             ]);
     }
