@@ -340,10 +340,11 @@ img {
     color: #ff2233 !important;
 }
 
-.email-logo {
+img.email-logo {
     float: left;
     height: 60px;
-    margin-bottom: 32px;
+    margin-top: 0px;
+    margin-bottom: 16px;
 }
 
 img.email-banner {
