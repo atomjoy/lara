@@ -264,6 +264,25 @@ class NewsletterMail extends Mailable implements ShouldQueue
 }
 ```
 
+## Tracking email views
+
+Create Newsletter and Subscriber models first.
+
+```php
+<?php
+
+use Lara\Actions\TrackViewsImage;
+use App\Models\Newsletter;
+use App\Models\Subscriber;
+
+Route::get('/track/email/views/{newsletter}/{subscriber}', function (
+    Newsletter $newsletter, Subscriber $subscriber, TrackViewsImage $ti
+) {
+    // Public directory 1x1px transparent png image path
+    return $ti->handle($newsletter, $subscriber, 'default/email/tracking.png');
+});
+```
+
 ## Cron
 
 Send emails from queue (or remove: implements ShouldQueue).
