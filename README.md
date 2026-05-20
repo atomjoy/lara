@@ -264,6 +264,21 @@ class NewsletterMail extends Mailable implements ShouldQueue
 }
 ```
 
+## Cron
+
+Send emails from queue (or remove: implements ShouldQueue).
+
+```sh
+# Cron
+crontab -e
+
+# Test every minute
+* * * * * /usr/bin/php /path-to-your-project/artisan queue:work --queue=high,medium,email,default --max-time=60 --sleep=5 > /dev/null
+
+# Hosting every 5 min
+*/10 * * * * php84 /home/username/domains/example.com/artisan queue:work --queue=high,medium,email,default --max-time=600 --sleep=5 > /dev/null
+```
+
 ## Publish Theme For Edit (optional)
 
 ```sh
