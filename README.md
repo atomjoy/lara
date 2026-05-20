@@ -54,7 +54,7 @@ php artisan serve
 php artisan serve --host=localhost --port=8000
 ```
 
-## How To Use
+## How To Use with Notifications
 
 In the terminal, type **php artisan make:notification EmailNotification** to create notification class, then update methods.
 
@@ -135,6 +135,132 @@ public function toMail(object $notifiable): MailMessage
             'events' => $events,
             'news' => $news,
         ]);
+}
+```
+
+## How To Use with Mailable
+
+```php
+<?php
+
+namespace App\Mail;
+
+use App\Models\Newsletter;
+use App\Models\Social;
+use App\Models\Subscriber;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Queue\SerializesModels;
+
+class NewsletterMail extends Mailable implements ShouldQueue
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Create a new message instance.
+     */
+    public function __construct(protected Newsletter $newsletter, protected Subscriber $subscriber)
+    {
+        $this->onQueue('email');
+    }
+
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            // from: new Address('example@example.com', 'Test Sender'),
+            subject: $this->newsletter?->subject ?? '👀 Fresh Newsletter',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        $page = app()->request->getSchemeAndHttpHost();
+
+        // Track views
+        $trackingUrl = '/track/email/views/' . $this->newsletter->id . '/' . $this->subscriber->id;
+        config([
+            'mail.email.tracking.image.url' => $trackingUrl
+        ]);
+
+        // Banner image
+        if (isset($this->newsletter->image)) {
+            config(['mail.email.banner' => $page . "/image/" . $this->newsletter->image]);
+        } else {
+            // Show default or uncoment to remove banner
+            // config(['mail.email.banner' => null]);
+        }
+
+        foreach (Social::where('place', 'newsletter')->get() as $s) {
+            config([
+                'mail.email.social.' . strtolower($s->name) => $s->url ?? $page,
+            ]);
+        }
+
+        $m = (new MailMessage)
+            ->subject($this->newsletter->subject ?? __('👀 Fresh Newsletter'))
+            ->greeting($this->replaceName($this->newsletter->title ?? __('👀 Fresh Newsletter')))
+            ->lines($this->splitLines($this->newsletter->line1 ?? ''))
+            ->action($this->newsletter->button ?? __('See More'), $this->newsletter->url ?? $page)
+            ->lines($this->splitLines($this->newsletter->line2 ?? ''))
+            ->theme('lara::theme.default')
+            ->markdown('lara::email.default', [
+                'code' => $this->newsletter->code ?? null,
+                'date' => $this->newsletter->published_at->format('Y-m-d') ?? null,
+                // Comment to hide
+                // 'info' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
+                // 'products' => $products,
+                // 'events' => $events,
+                // 'news' => $news,
+            ])->render();
+
+        return new Content(
+            htmlString: $m,
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
+    }
+
+    /**
+     * Replace mustache attribute {name}.
+     *
+     * @param string $str
+     * @return string
+     */
+    public function replaceName(string $str): string
+    {
+        return str_ireplace('{name}', $this->subscriber->name, $str);
+    }
+
+    /**
+     * Markdown multiple line format
+     *
+     * @param string $str
+     * @return array
+     */
+    public function splitLines(string $str): array
+    {
+        return array_map(trim(...), preg_split('/\\r\\n|\\r|\\n/', $this->replaceName($str) ?? ''));
+    }
 }
 ```
 
