@@ -37,6 +37,12 @@ class LaraNotificanion extends Notification
         // Image url
         $host = 'https://raw.githubusercontent.com/atomjoy/lara/refs/heads/main/public';
 
+        // Track views image (return image 1x1px content from url)
+        // $trackingUrl = '/track/email/views/{newsletter}/{subscriber}';
+        // config([
+        //     'mail.email.tracking.image.url' => $trackingUrl
+        // ]);
+
         // Lara config email template
         // Images always with https://
         config([
@@ -252,9 +258,9 @@ class LaraNotificanion extends Notification
             ->subject('Events notification')
             ->greeting('Web Interaction in the Age of AI')
             ->line('The introduction to the notification. Bold <strong>html tekst</strong> goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis?')
-            ->action('Confirm Email Address', url('/confirm/email'))
+            ->action('Confirm Email Address', $page . '/confirm/email') // Don't use url() function
             ->line('Thank you for using our application, <a href="https://example.com" target="_blank">very nice!</a>')
-            // Set default or mini theme and markdown
+            // Set 'default' or 'mini' theme and markdown
             ->theme('lara::theme.default')
             ->markdown('lara::email.default', [
                 // Comment to hide

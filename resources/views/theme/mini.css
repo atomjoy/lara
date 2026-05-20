@@ -238,6 +238,13 @@ img {
     padding-bottom: 32px;
 }
 
+.content-cell img {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
 /* Buttons */
 
 .action {
@@ -339,11 +346,10 @@ img {
     margin-bottom: 32px;
 }
 
-.email-banner {
+img.email-banner {
     float: left;
     width: 100%;
-    aspect-ratio: 16/9;
-    max-height: 372px;
+    height: auto;
     margin-bottom: 32px;
     border-radius: 5px;
     object-fit: cover;
@@ -443,4 +449,17 @@ img {
 .email-news .news-button:hover {
     color: #ff2d20;
     border: 1px solid #ff2d20;
+}
+
+/* Newsletter markdown */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    float: left;
+    width: 100%;
 }

@@ -31,6 +31,16 @@
 <div class="links">
     <a class="footer-link" href="{{ $unsubscribe }}" target="_blank">@lang('Unsubscribe')</a> | <a class="footer-link" href="{{ $policy }}" target="_blank">@lang('Privacy Policy')</a> | <a class="footer-link" href="{{ $settings }}" target="_blank">@lang('Manage settings')</a>
 </div>
+
+@php
+$track = config('mail.email.tracking.image.url', null);
+@endphp
+
+@isset($track)
+<div class="footer-small-image">
+<img src="{{$track}}" alt="regards" style="opacity: 0.1; font-size: 1px"/>
+</div>
+@endisset
 </td>
 </tr>
 </table>

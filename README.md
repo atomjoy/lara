@@ -73,6 +73,12 @@ public function toMail(object $notifiable): MailMessage
     // Demo image url
     $host = 'https://raw.githubusercontent.com/atomjoy/lara/refs/heads/main/public';
 
+    // Track views image (return image content from url)
+    // $trackingUrl = '/track/email/views/' . $this->newsletter->id . '/' . $this->notifiable->id;
+    // config([
+    //     'mail.email.tracking.image.url' => $trackingUrl
+    // ]);
+
     // Lara config email template links and images always with https://
     config([
         // Show
@@ -116,7 +122,7 @@ public function toMail(object $notifiable): MailMessage
         ->subject('Events notification')
         ->greeting('Web Interaction in the Age of AI')
         ->line('The introduction to the notification. Bold <strong>html tekst</strong> goes here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos eum ex, atque, porro debitis cumque praesentium, dolore illo ullam nemo doloremque at nobis?')
-        ->action('Confirm Email Address', url('/confirm/email'))
+        ->action('Confirm Email Address', $page . '/confirm/email') // Dont use url() function
         ->line('Thank you for using our application, <a href="https://example.com" target="_blank">very nice!</a>')
         // Set default or mini theme and markdown
         ->theme('lara::theme.default')
