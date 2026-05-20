@@ -266,7 +266,7 @@ class NewsletterMail extends Mailable implements ShouldQueue
 
 ## Tracking email views
 
-Create Newsletter and Subscriber models first.
+Create Newsletter and Subscriber models first. Add newsletter views column.
 
 ```php
 <?php
