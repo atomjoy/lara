@@ -189,7 +189,7 @@ class NewsletterMail extends Mailable implements ShouldQueue
         $page = app()->request->getSchemeAndHttpHost();
 
         // Track views
-        $trackingUrl = '/track/email/views/' . $this->newsletter->id . '/' . $this->subscriber->id;
+        $trackingUrl = $page . '/track/email/views/' . $this->newsletter->id . '/' . $this->subscriber->id;
         config([
             'mail.email.tracking.image.url' => $trackingUrl
         ]);
